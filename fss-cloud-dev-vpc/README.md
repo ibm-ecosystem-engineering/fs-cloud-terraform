@@ -13,7 +13,7 @@ This directory contains terraform code to create a minimum Red Hat OpenShift clu
 
 The internal registry for Red Hat OpenShift managed on IBM Cloud uses object storage for persistence. This code will also create a Cloud Object Storage instance in the resource group used for the OpenShift Cluster.
 
-- [Infrastructure as Code: Managing Container Registry (ICR) & Kubernetes Services (IKS) Resources](#infrastructure-as-code-managing-container-registry-icr--kubernetes-services-iks-resources)
+- [Infrastructure as Code: Creating Red Hat OpenShift clusters on VPC Gen2](#infrastructure-as-code-creating-red-hat-openshift-clusters-on-vpc-gen2)
   - [General Requirements](#general-requirements)
   - [Project Requirements](#project-requirements)
   - [How to use with Terraform](#how-to-use-with-terraform)
