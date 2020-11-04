@@ -15,9 +15,10 @@ The internal registry for Red Hat OpenShift managed on IBM Cloud uses object sto
 
 
 - [Infrastructure as Code: Creating Red Hat OpenShift clusters on VPC Gen2](#infrastructure-as-code-creating-red-hat-openshift-clusters-on-vpc-gen2)
-  - [General Requirements](#General-requirements)
-  - [Using Visual Studio Code](#Using-Visual-Studio-Code)
-  - [How to use with Terraform](#How-to-use-IBM-Cloud-Schematics)
+  - [General Requirements](#general-requirements)
+  - [Using Visual Studio Code](#using-visual-studio-code)
+  - [How to use IBM Cloud Schematics](#how-to-use-ibm-cloud-schematics)
+
 
 ## General Requirements
 
