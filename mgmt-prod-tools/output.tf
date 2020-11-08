@@ -1,5 +1,6 @@
+
 output "ip_address" {
-  value = ibm_is_floating_ip.mgmt_instance_floating_ip.address
+  value = ibm_is_floating_ip.mgmt_image
 }
 
 output "ssh_private_key" {
