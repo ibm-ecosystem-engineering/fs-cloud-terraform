@@ -11,7 +11,7 @@ variable "ssh_keyname" {
 
 # default to using CentOS 8
 variable "image_name" {
-  default = "ibm-centos-8-2-minimal-amd64-1"
+  default = "ibm-centos-7-0-minimal-amd64-1"
 }
 
 variable "profile" {

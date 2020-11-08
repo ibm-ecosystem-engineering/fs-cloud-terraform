@@ -13,7 +13,6 @@ resource "ibm_is_vpc_address_prefix" "mgmt_subnet_prefix" {
 }
 
 resource "ibm_is_subnet" "mgmt_subnet" {
-  count           = local.max_size
   name            = "${var.project_name}-${var.environment}-subnet"
   resource_group = data.ibm_resource_group.group.id
   zone            = var.zone
@@ -42,8 +41,8 @@ resource "ibm_is_security_group_rule" "mgmt_security_group_rule_tcp_ssh" {
   }
 }
 
-resource "ibm_is_floating_ip" "mgmt_instance_floating_ip" {
+resource "ibm_is_floating_ip" "mgmt_image" {
   name   = "${var.project_name}-${var.environment}-ip"
   resource_group = data.ibm_resource_group.group.id
-  target = ibm_is_instance.mgmt_instance.primary_network_interface.0.id
+  target = ibm_is_instance.mgmt_image.primary_network_interface.0.id
 }

@@ -2,7 +2,7 @@ data "ibm_is_image" "mgmt_image" {
   name = var.image_name
 }
 
-resource "ibm_is_instance" "mgmt_instance" {
+resource "ibm_is_instance" "mgmt_image" {
   name    = "${var.project_name}-${var.environment}-instance"
   resource_group  = data.ibm_resource_group.group.id
   image   = data.ibm_is_image.mgmt_image.id
@@ -10,7 +10,7 @@ resource "ibm_is_instance" "mgmt_instance" {
 
   primary_network_interface {
     name            = "eth0"
-    subnet          = ibm_is_subnet.mgmt_subnet[0].id
+    subnet          = ibm_is_subnet.mgmt_subnet.id
     security_groups = [ibm_is_security_group.mgmt_security_group.id]
   }
 
@@ -25,7 +25,7 @@ resource "ibm_is_instance" "mgmt_instance" {
 
 resource null_resource "wait-4-cloudinit" {
 
-  depends_on = [ ibm_is_instance.mgmt_instance ]
+  depends_on = [ ibm_is_instance.mgmt_image ]
   
   provisioner "remote-exec" {
     inline = [ "while [ ! -f '/root/cloudinit.done' ]; do echo 'waiting for userdata to complete...'; sleep 10; done" ]
@@ -33,7 +33,7 @@ resource null_resource "wait-4-cloudinit" {
     connection {
       type        = "ssh"
       user        = "root"
-      host        = ibm_is_floating_ip.mgmt_instance_floating_ip.address
+      host        = ibm_is_floating_ip.mgmt_image.address
       private_key = tls_private_key.ssh_key_keypair.private_key_pem
     }
   }
