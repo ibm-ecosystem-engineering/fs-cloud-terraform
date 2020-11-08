@@ -5,7 +5,7 @@ variable "resource_group" {
   default = "mgmt-tools-prod"
 }
 
-variable "ssh_keyname" {
+variable "ssh_keyname_test" {
   default = ""
 }
 
