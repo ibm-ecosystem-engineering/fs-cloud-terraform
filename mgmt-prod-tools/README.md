@@ -9,7 +9,7 @@ Check list for every README:
 
 -->
 
-This directory contains terraform code to create a minimum Red Hat OpenShift cluster in a VPC Gen 2. Note that in order for the OpenShift Web console and the OperatorHub to be operational, the VPC will be configured with a public gateway to allow outbound Internet traffic from the worker nodes.
+This directory contains terraform code to create a minimum Red Hat OpenShift cluster in a VPC.
 
 The internal registry for Red Hat OpenShift managed on IBM Cloud uses object storage for persistence. This code will also create a Cloud Object Storage instance in the resource group used for the OpenShift Cluster.
 
