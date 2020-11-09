@@ -1,4 +1,4 @@
-# Infrastructure as Code: IBM Cloud for Financial Services VPC + ROKS Toplogy
+# Infrastructure as Code: IBM Cloud for Financial Services VPC + ROKS Reference Automation
 <!--
 
 Check list for every README:
