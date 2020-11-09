@@ -1,4 +1,4 @@
-# Infrastructure as Code: Creating Red Hat OpenShift clusters on VPC Gen2
+# Infrastructure as Code: Creating Red Hat OpenShift clusters on VPC
 
 <!--
 
@@ -9,12 +9,12 @@ Check list for every README:
 
 -->
 
-This directory contains terraform code to create a minimum Red Hat OpenShift cluster in a VPC Gen 2. Note that in order for the OpenShift Web console and the OperatorHub to be operational, the VPC will be configured with a public gateway to allow outbound Internet traffic from the worker nodes.
+This directory contains terraform code to create a minimum Red Hat OpenShift cluster in a VPC. 
 
 The internal registry for Red Hat OpenShift managed on IBM Cloud uses object storage for persistence. This code will also create a Cloud Object Storage instance in the resource group used for the OpenShift Cluster.
 
 
-- [Infrastructure as Code: Creating Red Hat OpenShift clusters on VPC Gen2](#infrastructure-as-code-creating-red-hat-openshift-clusters-on-vpc-gen2)
+- [Infrastructure as Code: Creating Red Hat OpenShift clusters on VPC](#infrastructure-as-code-creating-red-hat-openshift-clusters-on-vpc-gen2)
   - [General Requirements](#general-requirements)
   - [Using Visual Studio Code](#using-visual-studio-code)
   - [How to use IBM Cloud Schematics](#how-to-use-ibm-cloud-schematics)
