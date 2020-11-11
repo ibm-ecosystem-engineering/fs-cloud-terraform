@@ -10,7 +10,7 @@ resource "ibm_is_instance" "mgmt_image" {
 
   primary_network_interface {
     name            = "eth0"
-    subnet          = ibm_is_subnet.mgmt_subnet.id
+    subnet          = ibm_is_subnet.mgmt_tools.id
     security_groups = [ibm_is_security_group.mgmt_security_group.id]
   }
 
