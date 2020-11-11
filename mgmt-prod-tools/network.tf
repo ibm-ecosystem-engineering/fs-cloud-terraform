@@ -12,7 +12,7 @@ resource "ibm_is_vpc_address_prefix" "mgmt_subnet_prefix" {
   cidr                      = "10.243.0.0/26"
 }
 
-resource "ibm_is_subnet" "mgmt_subnet" {
+resource "ibm_is_subnet" "mgmt_tools" {
   name            = "${var.project_name}-${var.environment}-subnet"
   resource_group = data.ibm_resource_group.group.id
   zone            = var.zone
