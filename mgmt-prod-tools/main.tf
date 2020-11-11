@@ -16,5 +16,6 @@ resource tls_private_key "ssh_key_keypair" {
 # Create an public/private ssh key pair to be used to login to VMs
 resource ibm_is_ssh_key "public_key" {
   name = "${var.project_name}-${var.environment}-public-key"
+  resource_group = data.ibm_resource_group.group.id
   public_key = tls_private_key.ssh_key_keypair.public_key_openssh
 }
