@@ -6,7 +6,7 @@ variable "resource_group" {
 }
 
 variable "ssh_keyname" {
-  default = "mgmt_ssh_key"
+  default = ""
 }
 
 # default to using CentOS 8
