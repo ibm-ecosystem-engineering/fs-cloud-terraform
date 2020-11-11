@@ -3,7 +3,7 @@ provider "ibm" {
   region     = var.region
 }
 
-data "ibm_is_ssh_key" "mgmt-ssh-key" {
+data "ibm_is_ssh_key" "mgmt_ssh_key" {
   name       = var.ssh_keyname
 }
 
