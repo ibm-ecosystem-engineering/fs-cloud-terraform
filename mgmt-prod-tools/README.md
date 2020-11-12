@@ -1,4 +1,4 @@
-# Infrastructure as Code: This document explains what the management repository is needed for (mgmt-prod-tools)
+# Infrastructure as Code: This document explains the management repository (mgmt-prod-tools)
 
 <!--
 
