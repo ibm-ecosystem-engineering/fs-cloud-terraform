@@ -1,4 +1,4 @@
-# Infrastructure as Code: Creating Red Hat OpenShift clusters on VPC Gen2
+# Infrastructure as Code: This document explains what the management repository is needed for (mgmt-prod-tools)
 
 <!--
 
@@ -9,15 +9,12 @@ Check list for every README:
 
 -->
 
-This directory contains terraform code to create a minimum Red Hat OpenShift cluster in a VPC.
+This directory contains terraform code to create a management VPC to access a bastion host vm for managing the OpenShift cluster (OCP).
 
-The internal registry for Red Hat OpenShift managed on IBM Cloud uses object storage for persistence. This code will also create a Cloud Object Storage instance in the resource group used for the OpenShift Cluster.
+In order to access the mgmt-prod-tools VPC you'll need to install several components.
 
-
-- [Infrastructure as Code: Creating Red Hat OpenShift clusters on VPC Gen2](#infrastructure-as-code-creating-red-hat-openshift-clusters-on-vpc-gen2)
   - [General Requirements](#general-requirements)
-  - [Using Visual Studio Code](#using-visual-studio-code)
-  - [How to use IBM Cloud Schematics](#how-to-use-ibm-cloud-schematics)
+  - [The management production tools VPC](#The-management-production-tools-VPC)
 
 
 ## General Requirements
@@ -26,34 +23,20 @@ Same for every pattern, the requirements are documented in the [Environment Setu
 
 - Create an IBM Cloud User Account
 - Create separate IBM Cloud accounts for development and production
-- Create and name a single GitHub repository (repo) for your Terraform (TS) project
-- Create a local workspace on your computer for the Github repository
-- Install Visual Studio’s to configure your TF modules
+- Install Visual Studio’s and download the mgmt-prod-tools module
 - Use the IBM Cloud user account to access IBM Cloud Schematics
 
-## Using Visual Studio Code
+## The management production tools VPC 
 
-- Create a public Github repository for the below work
-- Launch Visual Studio Code (VSC) and launch a new VSC terminal
-- In the VSC terminal type “pwd” 
-- Cd down into “github”
-- Type in mkdir “fss-cloud”
-- Cd down to fss-cloud
-- Open up VSC, then clone the fss-cloud-automation repo into the working directory fss-cloud
-- Setup your push & pull Github account in VSC
-- Make the necessary changes to the TF modules, and any other files
-- 11.	Commit the changes and push to GitHub 
-
-## How to use IBM Cloud Schematics
-
-- Log into IBM Cloud and access Schematics
-- Switch to the IBM Cloud account where you wish to create Schematics Workspace
-- In Schematics, create your Workspace
-- Name the Workspace, add a tag, select your resource group (if you haven’t, create one or use the default)
-- Select your region and add in the description for the Schematics Workspace and then choose Create
-- Add in your fss-cloud, Terraform, Github repository in the Schematics URL section
-- Select Terraform version _v0.12 and Save template information
-- For the Variables section, add any custom variables to override the TF modules and click Save Changes
-- In Schematics, click on Generate plan at the top. If the plan is successful you can click on Apply Plan
-- If the Schematics Apply plan was unsuccessful, review the logs to fix the issues
-- In IBM Cloud, choose the hamburger menu and choose Resource List, to review your deployments
+- Download this repo and make the appropriate changes for your environemnt. Use IBM Cloud Schematics along with Terrform to create the VPC. 
+- Once the VPC has been created you'll need to setup a VSI image (bastion host) with a private & public key pair
+- Use OpenVPN to create the VPN gateway between the on-premises location to access the VSI or bastion host
+- Make sure to configure your security group (SG) rules for inbound and outbound access for only the necessary services & protocols
+- consider not using access control list (ACL), SG's are considered more robust in access restrictions
+- There is documentation included in this repo on how to create the OpenVPN connection to the bastion host
+- This repo includes Terraform (TF) code for creating a Transit Gateway (TG) located in the fs-cloud-prod-vpc repo under the network.tf file
+- Configure the TG connections for the mgmt-prod-tools VPC & front-offic-prod-vpc. 
+- The front-office-prod-vpc, TF code is located in the fs-cloud-prod-vpc repository
+- Once the VPN has been established, log into the bastion host and setup the necessary tools for accessing the OCP
+- The bastion host can also be used to configure any CICD pipelines or other necessary administrative duties for managing the production environment
+- Keep in mind, the TG is used for allowing the bastion host to access the OCP and the VPN connectivity allows the on-premise or remote enterprise administrator to manage the bastion host and OCP cluster
